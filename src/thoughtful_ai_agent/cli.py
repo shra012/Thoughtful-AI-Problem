@@ -48,6 +48,10 @@ _QA_MAP = {_normalize_question(question): answer for question, answer in _QA_PAI
 
 def answer_question(question: str) -> str:
     """Return the hardcoded response for a matching question."""
+    if not isinstance(question, str):
+        return "Invalid question format. Please provide a text question."
+    if not question.strip():
+        return "Please provide a question about Thoughtful AI's agents."
     normalized = _normalize_question(question)
     return _QA_MAP.get(
         normalized,
